@@ -33,9 +33,9 @@ $(document).ready(function() {
   });
   
   $('.lineUpButton').on('click', function(event) {
-    var setTop = 50;
+    var setTop = Math.floor($('body').height() / 2);
     var setInitialLeft = 10;
-    var leftStep = 20;
+    var leftStep = Math.floor(($('body').width() - setInitialLeft * 2) / window.dancers.length);
     window.dancers.forEach((dancer, index)=>{
       dancer.setPosition(setTop, setInitialLeft + index * leftStep);
     });

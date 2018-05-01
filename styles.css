@@ -4,6 +4,8 @@ body, html{
 body{
   margin: 0px;
   background-color:#444;
+  background-image: url('https://i.ytimg.com/vi/2xeYlbWEnpk/maxresdefault.jpg');
+  background-size: auto;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
