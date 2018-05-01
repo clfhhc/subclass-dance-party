@@ -26,13 +26,13 @@ makeDancer.prototype.setPosition = function(top, left) {
     left: left
   };
   this.$node.css(styleSettings);
-  this.top=top;
-  this.left=left;
+  this.top = top;
+  this.left = left;
 };
 
-makeDancer.prototype.calculateDistance = function(dancer){
-  return ((this.top-dancer.top) ** 2+(this.left-dancer.left) ** 2) ** 0.5;
-}
+makeDancer.prototype.calculateDistance = function(dancer) {
+  return Math.pow(Math.pow(this.top - dancer.top, 2) + Math.pow(this.left - dancer.left, 2), 0.5);
+};
 
 makeDancer.prototype.findDistances = function(dancerArray) {
   var distances = [];
@@ -42,7 +42,7 @@ makeDancer.prototype.findDistances = function(dancerArray) {
   }.bind(this)); 
   
   return distances; 
-}
+};
 
 // makeDancer.prototype.findDistanceRatio = function(dancerArray,n){
 //   var distances=[];

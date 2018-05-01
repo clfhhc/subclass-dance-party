@@ -43,9 +43,20 @@ $(document).ready(function() {
     
     if (window.dancers.length === 1) {
       $('body').on('mouseenter', 'span.dancer', function() {
+        console.log(this.getElementsByTagName('img')[0].style);
+        this.style.border = '';
         this.className = 'mouseHover';
-        this.getElementsByTagName('img')[0].style.display = 'inline';
-        
+        var img = this.getElementsByTagName('img')[0];
+        img.style.display = 'inline';
+        $(img).animate({deg: 360}, {
+          duration: 750,
+          step: function(now) {
+            $(img).css({
+              transform: 'rotate(' + now + 'deg)'
+            });
+          }
+        });
+        $(img).css({deg: 0});
       });
       $('body').on('mouseleave', 'span.mouseHover', function() {
         this.className = 'dancer';
@@ -70,7 +81,6 @@ $(document).ready(function() {
     while (dancerArray.length > 0) {
       var storage = [];
       var distances = dancerArray[0].findDistances(dancerArray);
-      debugger;
       var i = 0;
       var topSum = 0;
       var leftSum = 0;
@@ -87,6 +97,10 @@ $(document).ready(function() {
       
       storage.forEach((dancer)=>{
         dancer.setPosition((topSum / storage.length), (leftSum) / storage.length);
+        if (storage.length > 1) {
+          var size = 10 * storage.length;
+          dancer.$node.css({border: size + 'px solid', 'border-radius': size + 'px'});
+        }
       });
     }
       
