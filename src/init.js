@@ -30,7 +30,28 @@ $(document).ready(function() {
     
     $('body').append(dancer.$node);
     
+    var img = document.createElement('IMG');
+    img.src = './funny\ elipse.png';
+    img.style.width = '200px';
+    img.style.height = '100px';
+    dancer.$node.append(img);
+    img.style.display = 'none';
+    // img.style['justify-content'] = 'center';
+    // img.style['align-items'] = 'center';
+    
     window.dancers.push(dancer);
+    
+    if (window.dancers.length === 1) {
+      $('body').on('mouseenter', 'span.dancer', function() {
+        this.className = 'mouseHover';
+        this.getElementsByTagName('img')[0].style.display = 'inline';
+        
+      });
+      $('body').on('mouseleave', 'span.mouseHover', function() {
+        this.className = 'dancer';
+        this.getElementsByTagName('img')[0].style.display = 'none';
+      });
+    }
   });
   
   $('.lineUpButton').on('click', function(event) {
@@ -42,24 +63,28 @@ $(document).ready(function() {
     });
   });
   
-  $('.interactiveDanceButton').on('click', function(event) {
-    var n = Math.floor(window.dancers.length * Math.random());
-    window.dancers.forEach(function(dancer) {
-      var ratio = dancer.findDistanceRatio(window.dancers, n);
-      dancer.$node.removeClass('dancer').addClass('interactiveDancer');
-      dancer.$node.css({
-        'border-color': 'green', 
-        'border-width': Math.floor(ratio * 200) + 'px', 
-        'border-style': 'solid',
-        'border-radius': Math.floor(ratio * 200) + 'px'
-      });
-      var animation = (function(cb) {
-        this.$node.animate({'top': (this.top + 20) + 'px'});
-        this.$node.animate({'top': (this.top - 20) + 'px'});
-        setTimeout(cb.bind(this, cb), 1000);
-      }).bind(dancer);
-      animation(animation);
-    });
-  });
+  
+  
+  // old interact button
+  // $('.interactiveDanceButton').on('click', function(event) {
+  //   var n = Math.floor(window.dancers.length * Math.random());
+  //   window.dancers.forEach(function(dancer) {
+  //     var ratio = dancer.findDistanceRatio(window.dancers, n);
+  //     dancer.$node.removeClass('dancer').addClass('interactiveDancer');
+  //     dancer.$node.css({
+  //       'border-color': 'green', 
+  //       'border-width': Math.floor(ratio * 200) + 'px', 
+  //       'border-style': 'solid',
+  //       'border-radius': Math.floor(ratio * 200) + 'px'
+  //     });
+  //     var animation = (function(cb) {
+  //       dancer.$node.animate({'top': (dancer.top + 20) + 'px'});
+  //       dancer.$node.animate({'top': (dancer.top - 20) + 'px'});
+  //       setTimeout(cb.bind(dancer, cb), 1000);
+  //     });
+  //     animation(animation);
+  //   });
+  // });
+
 });
 
