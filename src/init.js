@@ -63,7 +63,34 @@ $(document).ready(function() {
     });
   });
   
-  
+  $('.interactiveDanceButton').on('click', function(event) {
+    var distanceThreshold = 300;
+    var dancerArray = window.dancers.slice();
+    
+    while (dancerArray.length > 0) {
+      var storage = [];
+      var distances = dancerArray[0].findDistances(dancerArray);
+      debugger;
+      var i = 0;
+      var topSum = 0;
+      var leftSum = 0;
+      while (distances.length > 0 && i < distances.length) {
+        if (distances[i] < distanceThreshold) {
+          distances.splice(i, 1);
+          storage.push(dancerArray.splice(i, 1)[0]);
+          topSum += storage[storage.length - 1].top;
+          leftSum += storage[storage.length - 1].left;
+        } else {
+          i++;
+        }
+      }
+      
+      storage.forEach((dancer)=>{
+        dancer.setPosition((topSum / storage.length), (leftSum) / storage.length);
+      });
+    }
+      
+  });
   
   // old interact button
   // $('.interactiveDanceButton').on('click', function(event) {

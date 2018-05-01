@@ -34,25 +34,35 @@ makeDancer.prototype.calculateDistance = function(dancer){
   return ((this.top-dancer.top) ** 2+(this.left-dancer.left) ** 2) ** 0.5;
 }
 
-makeDancer.prototype.findDistanceRatio = function(dancerArray,n){
-  var distances=[];
+makeDancer.prototype.findDistances = function(dancerArray) {
+  var distances = [];
   
-  dancerArray.forEach(function(dancer,index){
+  dancerArray.forEach(function(dancer) {
     distances.push(this.calculateDistance(dancer));
-  }.bind(this));
+  }.bind(this)); 
   
-  var sorted = distances.sort(function(a,b) {
-    return a - b;
-  });
-  var closestSum;
-  var distanceSum = sorted.reduce((accu,item,index)=> {
-    accu+=item;
-    (index===n-1) && (closestSum=accu);
-    return accu;
-  });
-  
-  return closestSum/distanceSum*1/n;
+  return distances; 
 }
+
+// makeDancer.prototype.findDistanceRatio = function(dancerArray,n){
+//   var distances=[];
+  
+//   dancerArray.forEach(function(dancer,index){
+//     distances.push(this.calculateDistance(dancer));
+//   }.bind(this));
+  
+//   var sorted = distances.sort(function(a,b) {
+//     return a - b;
+//   });
+//   var closestSum;
+//   var distanceSum = sorted.reduce((accu,item,index)=> {
+//     accu+=item;
+//     (index===n-1) && (closestSum=accu);
+//     return accu;
+//   });
+  
+//   return closestSum/distanceSum*1/n;
+// }
 
 
 //Original:

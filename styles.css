@@ -37,6 +37,5 @@ body, a:link, a:visited, a:active{
   /*background-image: url('./funny\ elipse.png');
   background-size: 40px 20px;*/
   position: absolute;
-  align-items: center;
-  justify-content: center;
+  
 }
