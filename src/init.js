@@ -4,7 +4,7 @@ $(document).ready(function() {
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
-     * As long as the "data-dancer-maker-function-name" attribute of a
+     * As long as the "dat.a-dancer-maker-function-name" attribute of a
      * class="addDancerButton" DOM node matches one of the names of the
      * maker functions available in the global scope, clicking that node
      * will call the function to make the dancer.
@@ -27,6 +27,7 @@ $(document).ready(function() {
       $('body').width() * Math.random(),
       Math.random() * 1000
     );
+    
     $('body').append(dancer.$node);
     
     window.dancers.push(dancer);
@@ -38,6 +39,26 @@ $(document).ready(function() {
     var leftStep = Math.floor(($('body').width() - setInitialLeft * 2) / window.dancers.length);
     window.dancers.forEach((dancer, index)=>{
       dancer.setPosition(setTop, setInitialLeft + index * leftStep);
+    });
+  });
+  
+  $('.interactiveDanceButton').on('click', function(event) {
+    var n = Math.floor(window.dancers.length * Math.random());
+    window.dancers.forEach(function(dancer) {
+      var ratio = dancer.findDistanceRatio(window.dancers, n);
+      dancer.$node.removeClass('dancer').addClass('interactiveDancer');
+      dancer.$node.css({
+        'border-color': 'green', 
+        'border-width': Math.floor(ratio * 200) + 'px', 
+        'border-style': 'solid',
+        'border-radius': Math.floor(ratio * 200) + 'px'
+      });
+      var animation = (function(cb) {
+        this.$node.animate({'top': (this.top + 20) + 'px'});
+        this.$node.animate({'top': (this.top - 20) + 'px'});
+        setTimeout(cb.bind(this, cb), 1000);
+      }).bind(dancer);
+      animation(animation);
     });
   });
 });
