@@ -43,7 +43,6 @@ $(document).ready(function() {
     
     if (window.dancers.length === 1) {
       $('body').on('mouseenter', 'span.dancer', function() {
-        console.log(this.getElementsByTagName('img')[0].style);
         this.style.border = '';
         this.className = 'mouseHover';
         var img = this.getElementsByTagName('img')[0];
@@ -72,6 +71,16 @@ $(document).ready(function() {
     window.dancers.forEach((dancer, index)=>{
       dancer.setPosition(setTop, setInitialLeft + index * leftStep);
     });
+  });
+  
+  $('span.title').on('click', function(event) {
+    var buttonList = this.parentElement.getElementsByClassName('addDancer')[0];
+    if (buttonList.style.display === 'none') {
+      buttonList.style.display = 'inline';
+    } else {
+      buttonList.style.display = 'none';
+    }
+    event.stopPropagation();
   });
   
   $('.interactiveDanceButton').on('click', function(event) {

@@ -10,10 +10,22 @@ body{
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
+  text-decoration: none;
 }
+
+.functionalButton {
+  color: pink ;
+  font-weight: bold;
+  font-size: 25px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+
 .title, .addDancerButton{
   padding:5px 12px;
   float:right;
+  text-align: left;
 }
 .topbar{
   height:32px;
@@ -40,4 +52,13 @@ body, a:link, a:visited, a:active{
   border-width: 0px;
   border-radius: 0px;
   position: absolute;
+}
+
+.addDancer {
+  list-style-type: none;
+  display: none;
+  float: right;
+  clear: right;
+  background-color: #777;
+  margin-top: 0;
 }

@@ -11,12 +11,18 @@
   </head>
   <body>
     <div class="topbar">
-      <span class="title">Object Dance Party</span>
-      <a href="#" class="lineUpButton">Line up!</a> 
-      <a href="#" class="interactiveDanceButton">Interactive Dance!</a> 
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="makeBlinkyDancer">Add a blinky dancer</a>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="makeFadingDancer">add a fading dancer</a>
-      <a href="#" class="addDancerButton" data-dancer-maker-function-name="makeDiscoDancer">add a Disco dancer</a>    </div>
+      <span>
+        <span class="title">Object Dance Party</span>
+        <ul class="addDancer">
+          <li><a href="#" class="addDancerButton" data-dancer-maker-function-name="makeBlinkyDancer">Add a Blinky dancer</a></li>
+          <li><a href="#" class="addDancerButton" data-dancer-maker-function-name="makeFadingDancer">Add a Fading dancer</a></li>
+          <li><a href="#" class="addDancerButton" data-dancer-maker-function-name="makeDiscoDancer">Add a Disco dancer</a></li>
+        </ul>
+      </span>
+      <a href="#" class="lineUpButton functionalButton">Line up!</a> 
+      <a href="#" class="interactiveDanceButton functionalButton">Interactive Dance!</a>
+      
+    </div>
     <script src="src/init.js"></script>
   </body>
 </html>
