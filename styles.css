@@ -46,8 +46,6 @@ body, a:link, a:visited, a:active{
 }
 
 .mouseHover {
-  /*background-image: url('./funny\ elipse.png');
-  background-size: 40px 20px;*/
   border: 0px;
   border-width: 0px;
   border-radius: 0px;

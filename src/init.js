@@ -36,8 +36,6 @@ $(document).ready(function() {
     img.style.height = '100px';
     dancer.$node.append(img);
     img.style.display = 'none';
-    // img.style['justify-content'] = 'center';
-    // img.style['align-items'] = 'center';
     
     window.dancers.push(dancer);
     
@@ -93,6 +91,7 @@ $(document).ready(function() {
       var i = 0;
       var topSum = 0;
       var leftSum = 0;
+      
       while (distances.length > 0 && i < distances.length) {
         if (distances[i] < distanceThreshold) {
           distances.splice(i, 1);
@@ -111,30 +110,8 @@ $(document).ready(function() {
           dancer.$node.css({border: size + 'px solid', 'border-radius': size + 'px'});
         }
       });
-    }
-      
+    }   
   });
   
-  // old interact button
-  // $('.interactiveDanceButton').on('click', function(event) {
-  //   var n = Math.floor(window.dancers.length * Math.random());
-  //   window.dancers.forEach(function(dancer) {
-  //     var ratio = dancer.findDistanceRatio(window.dancers, n);
-  //     dancer.$node.removeClass('dancer').addClass('interactiveDancer');
-  //     dancer.$node.css({
-  //       'border-color': 'green', 
-  //       'border-width': Math.floor(ratio * 200) + 'px', 
-  //       'border-style': 'solid',
-  //       'border-radius': Math.floor(ratio * 200) + 'px'
-  //     });
-  //     var animation = (function(cb) {
-  //       dancer.$node.animate({'top': (dancer.top + 20) + 'px'});
-  //       dancer.$node.animate({'top': (dancer.top - 20) + 'px'});
-  //       setTimeout(cb.bind(dancer, cb), 1000);
-  //     });
-  //     animation(animation);
-  //   });
-  // });
-
 });
 
